@@ -10,21 +10,25 @@ function setup(){
     createCanvas(400, 400);
 
     //create sprites here
-    path = createSprite(205, 195);
     path=createSprite(200,200);
     path.addImage(pathImg);
-    path.velocity=4;
     path.velocityY = 4;
     path.scale=1.2;
 
+    runner = createSprite(200,300);
+    runner.addAnimation("running",running);
+    runner.scale =0.05;
+
+}
 
 
- function draw() {
-    
+function draw() {
+   console.log(path.y);
 
-     if(keyIsDown(LEFT_ARROW)){
-       runner.veloctiyY = -10;
-       runner.x -= 3;
-     }
-    }
+   runner.x = World.mouseX;
+  if(path.y>400){
+    path.y = width/2
+  }
+
+  drawSprites();
 }
